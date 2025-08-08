@@ -1,0 +1,12 @@
+{
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.11" 
+    }
+  },
+  "build": {
+    "env": {
+      "OPENAI_API_KEY": "@openai-api-key" 
+    }
+  }
+}

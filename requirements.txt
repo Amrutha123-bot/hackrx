@@ -1,0 +1,14 @@
+streamlit
+langchain-openai
+langchain-community
+langchain-text-splitters
+langchain-core
+pydantic
+python-dotenv
+unstructured
+pdfminer.six # Often needed by unstructured for PDFs
+python-docx # For .docx files
+beautifulsoup4 # Often needed by unstructured
+lxml # Often needed by unstructured
+chromadb
+# Add any other dependencies you might have installed
