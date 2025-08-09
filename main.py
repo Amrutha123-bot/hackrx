@@ -21,7 +21,27 @@ from langchain_community.document_loaders import UnstructuredFileLoader
 # Vector Stores
 from langchain_community.vectorstores import Chroma
 # Removed FAISS import as we are using Chroma
+from fastapi import FastAPI, Request
+import uvicorn
+from threading import Thread
+import json
 
+app = FastAPI()
+
+# 🧠 Webhook route
+@app.post("/api/v1/hackrx/run")
+async def github_webhook(request: Request):
+    payload = await request.json()
+    # print("✅ Received GitHub Webhook:")
+    print(json.dumps(payload, indent=2))
+    return {"status": "Webhook received"}
+
+# 🚀 Run FastAPI in background
+def run_api():
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# 🎈 Start FastAPI in a background thread
+Thread(target=run_api, daemon=True).start()
 # Chains and Prompts
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
