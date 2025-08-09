@@ -70,7 +70,7 @@ idna==3.10
 importlib_metadata==8.7.0
 importlib_resources==6.5.2
 ipykernel==6.29.5
-ipython==8.24.0
+ipython
 ipython_pygments_lexers==1.1.1
 isoduration==20.11.0
 itsdangerous==2.2.0
@@ -215,7 +215,7 @@ rpds-py==0.26.0
 rsa==4.9.1
 safetensors==0.5.3
 scikit-learn==1.7.0
-scipy==1.11.4
+scipy
 seaborn==0.13.2
 Send2Trash==1.8.3
 sentence-transformers==5.0.0
