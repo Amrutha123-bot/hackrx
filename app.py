@@ -1,30 +1,59 @@
-from flask import Flask, request
-from dotenv import load_dotenv
-from pyngrok import ngrok
+# from flask import Flask, request
+# from dotenv import load_dotenv
+# from pyngrok import ngrok
+# import json
+# import os
+# ngrok.set_auth_token(os.getenv("NGROK_AUTHTOKEN"))
+# app = Flask(__name__)
+
+# # This route matches your desired endpoint
+# @app.route("/api/v1/hackrx/run", methods=["POST"])
+# def github_webhook():
+#     payload = request.json
+#     print("\n📦 Received GitHub Webhook Payload:")
+#     print(json.dumps(payload, indent=2))
+#     return {"status": "Webhook received"}, 200
+
+# if __name__ == "__main__":
+#     if os.environ.get("HEROKU") == "1":
+#         # Run normally on Heroku
+#         app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+#     else:
+#         # Run locally with ngrok
+#         public_url = ngrok.connect(5000)
+#         print(f"\n🚀 Ngrok Tunnel URL: {public_url}")
+#         print("Use this in GitHub Webhook settings (append /api/v1/hackrx/run)")
+
+#         app.run(port=5000)
+
+
+# @app.route("/api/v1/hackrx/run", methods=["POST"])
+# def github_webhook():
+#     payload = request.json
+#     with open("webhook_logs.json", "a") as f:
+#         f.write(json.dumps(payload) + "\n")
+
+#     print("\n📦 GitHub Webhook Payload:")
+#     print(json.dumps(payload, indent=2))
+#     return {"status": "Webhook received"}, 200
+
+from flask import Flask, request, jsonify
 import json
-import os
-ngrok.set_auth_token(os.getenv("NGROK_AUTHTOKEN"))
+
 app = Flask(__name__)
 
-# This route matches your desired endpoint
 @app.route("/api/v1/hackrx/run", methods=["POST"])
 def github_webhook():
+    event_type = request.headers.get("X-GitHub-Event")
     payload = request.json
-    print("\n📦 Received GitHub Webhook Payload:")
+
+    print(f"\n📩 Received GitHub event: {event_type}")
     print(json.dumps(payload, indent=2))
-    return {"status": "Webhook received"}, 200
+
+    return jsonify({"status": f"{event_type} event received ✅"}), 200
 
 if __name__ == "__main__":
-    if os.environ.get("HEROKU") == "1":
-        # Run normally on Heroku
-        app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-    else:
-        # Run locally with ngrok
-        public_url = ngrok.connect(5000)
-        print(f"\n🚀 Ngrok Tunnel URL: {public_url}")
-        print("Use this in GitHub Webhook settings (append /api/v1/hackrx/run)")
-
-        app.run(port=5000)
+    app.run(port=5000)
 
 
 
