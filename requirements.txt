@@ -101,7 +101,7 @@ langchain-community
 langchain-core
 langchain-openai
 langchain-text-splitters
-langchain-unstructured # Added based on previous discussion
+langchain-unstructured 
 langdetect
 langsmith
 lxml
@@ -127,7 +127,7 @@ networkx
 nltk
 notebook_shim
 numpy
-nvidia-cublas-cu12 # Note: These are often NOT pip installable. See previous notes.
+nvidia-cublas-cu12 
 nvidia-cuda-cupti-cu12
 nvidia-cuda-nvrtc-cu12
 nvidia-cuda-runtime-cu12
@@ -199,7 +199,6 @@ python-dotenv
 python-iso639
 python-json-logger
 python-magic
-python-magic-bin # Note: Often for Windows. May conflict with system libmagic.
 python-multipart
 python-oxmsg
 pytz
@@ -255,6 +254,7 @@ typing-inspection
 typing_extensions
 tzdata
 unstructured
+unstructured[pdf]
 unstructured-client
 unstructured-inference
 uri-template

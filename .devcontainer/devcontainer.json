@@ -1,0 +1,21 @@
+{
+  "name": "Python 3 & Streamlit",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11", // Or your preferred Python version
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11" // Match the version in "image"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python", // Essential for Python development
+        "ms-python.vscode-pylance" // For code completion and analysis
+        // Add any other VS Code extensions you use
+      ]
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y libgl1-mesa-glx --no-install-recommends && pip install --upgrade pip && pip install -r requirements.txt",
+  "forwardPorts": [8501] // Default Streamlit port
+  // If you are using other ports, add them here.
+}
